@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Claims Processing Agent</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <h1>🛡 Insurance Claims Processing Agent</h1>
+
+            <p>
+                Upload an FNOL document (PDF/TXT) to automatically extract
+                information and determine the appropriate claim route.
+            </p>
+
+        </div>
+
+        <div class="upload-card">
+
+            <label class="upload-label">
+
+                <input type="file"
+                    id="file"
+                    accept=".pdf,.txt"
+                    hidden>
+
+                <span class="upload-btn">
+                    📄 Choose PDF / TXT File
+                </span>
+
+            </label>
+
+            <p id="filename">No file selected</p>
+
+            <button onclick="uploadFile()">
+                Process Claim
+            </button>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <span>Processing claim...</span>
+        </div>
+
+
+        </div>
+
+
+
+        <div id="result"></div>
+
+    </div>
+
+    <script src="/static/script.js"></script>
+
+    <script>
+
+        const fileInput = document.getElementById("file");
+
+        fileInput.addEventListener("change", function () {
+
+            if (this.files.length > 0) {
+
+                document.getElementById("filename").innerText =
+                    this.files[0].name;
+
+            }
+            else {
+
+                document.getElementById("filename").innerText =
+                    "No file selected";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
