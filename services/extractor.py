@@ -12,16 +12,12 @@ client = genai.Client(
 
 def extract_fields(text):
 
-    with open(
-        "prompts/extraction_prompt.txt",
-        "r",
-        encoding="utf-8"
-) as f:
+    with open("prompts/extraction_prompt.txt","r",
+        encoding="utf-8") as f:
 
         prompt = f.read()
 
-    final_prompt = f"""
-{prompt}
+    final_prompt = f"""{prompt}
 
 FNOL Document:
 
@@ -31,9 +27,9 @@ FNOL Document:
     try:
 
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=final_prompt
-        )
+                   model="gemini-2.5-flash",
+                   contents=final_prompt
+                   )
 
         output = response.text.strip()
 

@@ -37,8 +37,7 @@ async def process_claim(file: UploadFile = File(...)):
         claim = ClaimData(**extracted_data)
     except ValidationError as e:
 
-        return {"error":"Validation Failed",
-                "details":e.errors()}
+        return {"error":"Validation Failed","details":e.errors()}
     
 
     claim_dict = claim.model_dump()
@@ -48,10 +47,7 @@ async def process_claim(file: UploadFile = File(...)):
 
     missing_fields = validate_claim(claim_dict)
 
-    route, reason = recommend_route(
-        claim_dict,
-        missing_fields
-    )
+    route, reason = recommend_route(claim_dict,missing_fields)
 
     return {
 

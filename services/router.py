@@ -16,9 +16,7 @@ def recommend_route(data, missing_fields):
                 "Investigation Flag",f"Description contains '{word}'.")
 
 
-    claim_type = str(
-        data.get("claimType", "")
-    ).lower()
+    claim_type = str(data.get("claimType", "")).lower()
 
     if claim_type == "injury":
         return (
@@ -35,13 +33,7 @@ def recommend_route(data, missing_fields):
         if damage is not None:
 
             if damage < 25000:
-                return (
-                "Fast-track",
-                "Estimated damage is below ₹25,000.")
-        
-        
-
-
+                return ("Fast-track","Estimated damage is below ₹25,000.")
     except:
         pass
 
